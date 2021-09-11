@@ -2,6 +2,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.vscode
+banco.db
+exemplo_de_uso.py
 
 # C extensions
 *.so
