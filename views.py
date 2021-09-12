@@ -1,4 +1,4 @@
-from utils import load_data, load_template, build_response, add_note, remove_note
+from utils import load_data, load_template, build_response, add_note, remove_note, update_note
 from urllib.parse import unquote_plus
 from database import Database
 
@@ -18,6 +18,16 @@ def index(request: str, database: Database):
             note_id = int(corpo[7:])
 
             remove_note(database, note_id)
+        elif "update" in request:
+            corpo_formatado = unquote_plus(corpo[7:])
+            params = {}
+
+            for chave_valor in corpo_formatado.split('&'):
+                chave = chave_valor.split('=')[0]
+                valor = chave_valor.split('=')[1]
+                params[chave] = valor
+            
+            update_note(database, int(params["id"]), params["title"], params["content"])
         else:
             params = {}
 

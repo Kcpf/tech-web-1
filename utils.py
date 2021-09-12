@@ -13,9 +13,12 @@ def extract_route(request: str) -> str:
 
 def read_file(path: Path) -> str:
     for suffix in ["*.txt", "*.html", "*.css", "*.js"]:
-        if path.match(suffix): return path.read_text().encode("utf-8")
+        if path.match(suffix): 
+            with open(path, "r", encoding="utf-8") as file:
+                return file.read().encode()
     
-    return path.read_bytes()
+    with open(path, "rb") as file:
+        return file.read()
 
 def build_response(body: str = '', code: int = 200, reason: str = 'OK', headers: str = ''):
     if headers != '': return f"HTTP/1.1 {code} {reason}\n{headers}\n\n{body}".encode()
@@ -32,7 +35,11 @@ def add_note(database: Database, title: str, content: str) -> None:
 def remove_note(database: Database, note_id: int) -> None:
     database.delete(note_id)
 
+def update_note(database: Database, note_id: int, title: str, content: str) -> None:
+    updated_note = Note(note_id, title, content)
+    database.update(updated_note)
+
 def load_template(file_name: str) -> str:
-    file = Path(f"client/{file_name}")
-    return file.read_text()
+    with open(f"client/{file_name}", "r", encoding="utf-8") as file:
+        return file.read()
 

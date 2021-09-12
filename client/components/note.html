@@ -1,11 +1,14 @@
 <div class="card">
-  <form method="POST">
-    <div class="card-header">
-      <h3 class="card-title">{title}</h3>
-      <button name="delete" type="submit" class="card-button" value="{id}">X</button>
+  <div class="card-header">
+    <h3 class="card-title">{title}</h3>
+    <div class="card-buttons">
+      <button class="card-edit-button" value="{title}&{content}&{id}">&#9999;</button>
+      <form method="POST">
+        <button name="delete" type="submit" class="card-delete-button" value="{id}">&times;</button>
+      </form>
     </div>
-    <div class="card-content">
-      <p>{content}</p>
-    </div>
-  </form>
+  </div>
+  <div class="card-content">
+    <p>{content}</p>
+  </div>
 </div>

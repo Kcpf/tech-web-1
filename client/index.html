@@ -44,8 +44,23 @@
         {notes}
       </div>
 
+      <div name="myModal" class="modal" id="modal" >  
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <div class="modal-title">                    
+            <label class="modal-label">Título:</label>
+            <textarea id="modal-title" class="textarea-modal"></textarea> 
+          </div> 
+          <div class="modal-content">
+            <label class="modal-label">Conteúdo:</label>
+            <textarea id="modal-content" class="textarea-modal"></textarea>                      
+          </div>
+          <form method="POST" class="form-modal-update">
+              <button id="modal-update-button" class="modal-update-button" name="update" type="submit">Atualizar</button>
+          </form>
+        </div>
+      </div>
     </main>
-
     <script type="text/javascript" src="client/getit.js"></script>
   </body>
 </html>

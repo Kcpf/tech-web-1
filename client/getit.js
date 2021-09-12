@@ -1,3 +1,39 @@
+// Get the modal
+var modal = document.getElementById("modal");
+
+// Get the buttons that opens the modal
+var btns = document.getElementsByClassName("card-edit-button");
+
+// Get the <span> elements that closes the modal
+var spans = document.getElementsByClassName("close");
+
+var noteId = "";
+var modalTitle = document.getElementById("modal-title");
+var modalContent = document.getElementById("modal-content");
+var modalUpdateButton = document.getElementById("modal-update-button");
+
+
+for (let btn of btns) {
+  btn.onclick = () => {
+    let [title, content, id] = btn.value.split("&");
+
+    modal.style.display = "block";
+    modalTitle.innerHTML = title;
+    modalContent.innerHTML = content;
+    noteId = id;
+  }
+}
+
+for (let span of spans) {
+  span.onclick = () => {
+    modal.style.display = "none";
+  }
+}
+
+modalUpdateButton.onclick = () => {
+  modalUpdateButton.setAttribute("value", `id=${noteId}&title=${modalTitle.value}&content=${modalContent.value}`);
+}
+
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);

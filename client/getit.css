@@ -111,7 +111,15 @@ body {
   font-weight: bold;
 }
 
-.card-button {
+.card-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.card-delete-button {
   margin-bottom: 1.5rem;
   font-size: 1.4rem;
   font-weight: bold;
@@ -120,9 +128,119 @@ body {
   background-color: transparent;
 }
 
-.card-button:hover {
+.card-delete-button:hover,
+.card-delete-button:focus {
   color: rgba(255, 0, 0, 0.342);
   background-color: transparent;
+  cursor: pointer;
+}
+
+.card-edit-button {
+  border: 0;
+  border-radius: .8rem;
+  background-color: transparent;
+  font-size: 1.1rem;
+}
+
+.card-edit-button:hover,
+.card-edit-button:focus {
+  background-color: transparent;
+  color: rgb(124, 124, 124);
+  cursor: pointer;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-header {
+  background-color: #f7d736;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 50%;
+  height: 25%;
+  padding: 20px;
+  border: 1px solid #888;
+  margin: 15% auto;
+  border-radius: 1rem;
+}
+
+.modal-title {
+  background-color: #f7d736;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 95%;
+  height: 30%;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.modal-content {
+  background-color: #f7d736;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 95%;
+  height: 30%;
+  padding: 20px;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.textarea-modal{
+  background-color: #f7d736;
+  resize: none;
+  width: 50%;
+  font-size: 1.2rem;
+  font-family: 'Permanent Marker', cursive;
+  border-radius: .4rem;
+  padding: .4rem;
+}
+
+.modal-label{
+  align-self: center;
+  margin: 1%;
+  font-size: 1.4rem;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+} 
+
+.form-modal-update {
+  align-self: center;
+}
+
+.modal-update-button {
+  border: 0;
+  border-radius: 1rem;
+  font-size: 1rem;
+  padding: .3rem 1rem;
+}
+
+.modal-update-button:hover,
+.modal-update-button:focus {
+  background-color: rgb(151, 151, 151);
+  cursor: pointer;
 }
 
 .card-content{
