@@ -8,11 +8,11 @@ var btns = document.getElementsByClassName("card-edit-button");
 var spans = document.getElementsByClassName("close");
 
 var noteId = "";
-var modalTitle = document.getElementById("modal-title");
-var modalContent = document.getElementById("modal-content");
+var modalTitle = document.getElementById("modal-title-text");
+var modalContent = document.getElementById("modal-content-text");
 var modalUpdateButton = document.getElementById("modal-update-button");
 
-
+// When the user clicks on the button, open the modal
 for (let btn of btns) {
   btn.onclick = () => {
     let [title, content, id] = btn.value.split("&");
@@ -24,6 +24,7 @@ for (let btn of btns) {
   }
 }
 
+// When the user clicks on <span> (x), close the modal
 for (let span of spans) {
   span.onclick = () => {
     modal.style.display = "none";
