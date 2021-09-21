@@ -1,2 +1,2 @@
 release: python Projeto-B/manage.py migrate
-web: gunicorn Projeto-B/getit.wsgi
+web: sh -c 'cd ./Projeto-B/ && gunicorn getit.wsgi'
