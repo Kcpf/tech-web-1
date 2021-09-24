@@ -2,10 +2,6 @@
 {% load static %}
 
 {% block content %}
-<div class="appbar">
-  <img src="{% static 'notes/img/logo-getit.png' %}" class="logo" />
-  <span class="subtitle">Como o Post-it, mas com outro verbo</span>
-</div>
 
 <main class="container">
   <form method="POST" action="/add" class="form-card">
@@ -21,8 +17,15 @@
       name="content"
       placeholder="Digite o conteúdo..."
     ></textarea>
+    <textarea
+      class="autoresize"
+      name="tag"
+      placeholder="Digite o nome da tag..."
+    ></textarea>
     <button class="btn" type="submit">Criar</button>
   </form>
+
+  <a class="btn" href="/tags">Ver todas as tags</a>
 
   <div class="card-container">
     {% for note in notes %}
@@ -30,7 +33,7 @@
         <div class="card-header">
           <h3 class="card-title">{{ note.title }}</h3>
           <div class="card-buttons">
-            <button class="card-edit-button" value="{{ note.title }}&{{ note.content }}&{{ note.id }}">&#9999;</button>
+            <button class="card-edit-button" value="{{ note.title }}&{{ note.content }}&{{ note.tag_id }}&{{ note.id }}">&#9999;</button>
             <form method="get" action="/delete">
               {% csrf_token %}
               <button name="delete" type="submit" class="card-delete-button" value="{{ note.id }}">&times;</button>
@@ -54,6 +57,10 @@
       <div class="modal-content">
         <label class="modal-content-label">Conteúdo:</label>
         <textarea id="modal-content-text" class="modal-content-text"></textarea>                      
+      </div>
+      <div class="modal-tag">
+        <label class="modal-tag-label">Tag:</label>
+        <textarea id="modal-tag-text" class="modal-tag-text"></textarea>                      
       </div>
       <form action="/update" class="form-modal-update">
         {% csrf_token %}

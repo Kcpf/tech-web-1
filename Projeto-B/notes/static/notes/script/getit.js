@@ -10,16 +10,18 @@ var spans = document.getElementsByClassName("close");
 var noteId = "";
 var modalTitle = document.getElementById("modal-title-text");
 var modalContent = document.getElementById("modal-content-text");
+var modalTag = document.getElementById("modal-tag-text");
 var modalUpdateButton = document.getElementById("modal-update-button");
 
 // When the user clicks on the button, open the modal
 for (let btn of btns) {
   btn.onclick = () => {
-    let [title, content, id] = btn.value.split("&");
+    let [title, content, tag, id] = btn.value.split("&");
 
     modal.style.display = "block";
     modalTitle.innerHTML = title;
     modalContent.innerHTML = content;
+    modalTag.innerHTML = tag;
     noteId = id;
   }
 }
@@ -32,7 +34,7 @@ for (let span of spans) {
 }
 
 modalUpdateButton.onclick = () => {
-  modalUpdateButton.setAttribute("value", `id=${noteId}&title=${modalTitle.value}&content=${modalContent.value}`);
+  modalUpdateButton.setAttribute("value", `id=${noteId}&title=${modalTitle.value}&content=${modalContent.value}&tag_id=${modalTag.value}`);
 }
 
 function getRandomInt(min, max) {

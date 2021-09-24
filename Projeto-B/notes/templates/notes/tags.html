@@ -1,0 +1,15 @@
+{% extends "notes/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="tags">
+  <p class="all-tags">Todas as tags</p>
+  <ul>
+    {% for tag in tags %}
+    <a class="tag-link" href="/details?name={{ tag.name }}">{{ tag.name }}</a>
+    {% endfor %}
+
+  </ul>
+</div>
+{% endblock %}
