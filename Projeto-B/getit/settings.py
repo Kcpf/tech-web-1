@@ -83,6 +83,17 @@ WSGI_APPLICATION = 'getit.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'getit',
+#         'USER': 'getituser',
+#         'PASSWORD': 'getitsenha',
+#         'HOST': 'localhost',
+#         'PORT': '5433',
+#     }
+# }
+
 DATABASES = {
     'default': dj_database_url.config(
         default='postgresql://localhost/getit?user=getituser&password=getitsenha',
