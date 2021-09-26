@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div>
+      <h1>Memória</h1>
+      <form method="POST" action="/add" class="form-card">
+        {% csrf_token %}
+        <textarea
+          name="content"
+          placeholder="Digite o conteúdo..."
+        ></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    <p>{{ content }}</p>
+  </body>
+</html>
