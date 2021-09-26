@@ -47,3 +47,9 @@ def index(request: str, database: Database):
 
 
     return response + load_template('index.html').format(notes=notes).encode()
+
+def unfound(request: str):
+    response = build_response()
+    
+    return response + load_template('error.html').encode()
+    

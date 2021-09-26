@@ -1,7 +1,7 @@
 import socket
 from pathlib import Path
 from utils import extract_route, load_database, read_file, build_response
-from views import index
+from views import index, unfound
 
 CUR_DIR = Path(__file__).parent
 SERVER_HOST = '0.0.0.0'
@@ -30,7 +30,7 @@ while True:
     elif route in ["", " /"]:
         response = index(request, database)
     else:
-        response = build_response()
+        response = unfound(request)
 
     client_connection.sendall(response)
 
