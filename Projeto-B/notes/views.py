@@ -1,5 +1,9 @@
 from django.shortcuts import render, redirect
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from django.http import Http404
 from .models import Note, Tag
+from .serializers import NoteSerializer
 
 
 def index(request):
@@ -65,3 +69,35 @@ def details(request):
     notes = Note.objects.filter(tag_id=tag.id)
 
     return render(request, 'notes/details.html', {'notes': notes, 'name': name})
+
+@api_view(['GET', 'POST'])
+def api_note(request, note_id):
+    try:
+        note = Note.objects.get(id=note_id)
+    except Note.DoesNotExist:
+        raise Http404()
+
+    if request.method == 'POST':
+        new_note_data = request.data
+        note.title = new_note_data['title']
+        note.content = new_note_data['content']
+        note.save()
+    
+    serialized_note = NoteSerializer(note)
+    return Response(serialized_note.data)
+
+@api_view(['GET', 'POST'])
+def api_notes(request):
+    try:
+        notes = Note.objects.all()
+    except Note.DoesNotExist:
+        raise Http404()
+
+    if request.method == 'POST':
+        new_note_data = request.data
+        new_note = Note(title=new_note_data['title'], content=new_note_data['content'])
+        new_note.save()
+    
+    serialized_notes = NoteSerializer(notes, many=True)
+
+    return Response(serialized_notes.data)
